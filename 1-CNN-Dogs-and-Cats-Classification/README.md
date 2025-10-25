@@ -64,7 +64,13 @@ After preprocessing, the data distribution was as follows:
 ---
 ## Step 3: 🔹 CNN Model Architecture
 
-<img width="7507" height="123" alt="Image" src="https://github.com/user-attachments/assets/fe3f8323-1ffd-431d-a39c-19c908d7ad49" />
+
+
+<details> 
+  <summary><strong>View model</strong></summary> 
+  <br>
+ <img width="500" height="1000" alt="Image" src="https://github.com/user-attachments/assets/b06d0318-176d-4076-9a41-0f687a3c5cff" />
+</details>
 
 The CNN model consists of:
 
@@ -136,7 +142,14 @@ Below is the confusion matrix and classification report for the test data, which
  <img width="406" height="200" alt="Classification Report" src="https://github.com/user-attachments/assets/248ff276-5326-4856-b846-caf4d9df7f60" />
 </p>
 
-
 📌 Not: The **test set generator was configured with shuffle=False** to ensure that predictions align correctly with the true labels for accurate evaluation.
+
+**=>** After **loading the saved (.keras) model, the prediction results for new images** were examined using the predict_image function.
+
+<p align="center"> 
+<img width="250" height="277" alt="Image" src="https://github.com/user-attachments/assets/b44495d1-433a-4a61-8994-aecb1371a304" />
+<img width="240" height="273" alt="image" src="https://github.com/user-attachments/assets/b2e68bd7-201b-4a5b-bc7f-328afb3607d6" />
+<img width="245" height="277" alt="image" src="https://github.com/user-attachments/assets/02bd90c9-d1bd-4d40-b638-8b9f9cb6d8bc" />
+</p>
 
 ---
