@@ -41,15 +41,12 @@ The visualizations show that both datasets are balanced between the two classes 
 
 ### Augmentation
 
-Since the dataset contains a large number of images, **batch processing was applied using Keras’ ImageDataGenerator.** This approach also included data augmentation techniques to improve model generalization, such as:
+**The dataset was loaded using `ImageDataGenerator` with the `flow_from_directory()` method.**
 
-* Rescaling pixel values
-* Random rotations
-* Horizontal and vertical flips
-* Shearing and zooming
-* Width and height shifts
-
-The dataset was split into training (80%) and validation (20%) subsets. A separate test set was also prepared.
+- Training images were augmented with rotation, horizontal and vertical flips, shear, zoom, and width/height shifts to generate diverse samples, while pixel values were normalized to the [0,1] range. 
+- A 20% subset of the training data was reserved for validation using the `validation_split` parameter, ensuring that the training and validation sets do not share any images.
+- The training generator (`train_generator`) takes **80%** of the data, while the validation generator (`validation_generator`) uses the remaining **20%**. Test data was loaded separately from a different directory without augmentation to evaluate the model's performance.
+- This approach not only enhances model generalization by providing diverse training data but also ensures **efficient memory usage in Google Colab.**
 
 <img width="415" height="277" alt="Image" src="https://github.com/user-attachments/assets/2938fbb1-f96c-40ef-bf1e-f8394c5f898a" />
 
