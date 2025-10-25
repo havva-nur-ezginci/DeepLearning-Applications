@@ -96,6 +96,8 @@ The model achieved stable convergence with gradually decreasing validation loss,
 ---
 ## Step 5: Model Evaluation & Results
 
+### Results 
+
 The key metrics monitored during training were **Accuracy, Loss, Precision and Recall**.
 
 <p align="center"> 
@@ -110,7 +112,31 @@ The key metrics monitored during training were **Accuracy, Loss, Precision and R
 
 **Precision & Recall**: Both metrics gradually improved, reaching ~0.85–0.90, which demonstrates a balanced ability to correctly identify both cats and dogs.
 
-The smooth convergence of all metrics indicates that the model generalizes well to new images.
+### Evaluation
 
+Model results for test data : 
+- Total test image = 2023
+- batch_size = 64
+=> 31(step)*64 + 39 = 2023
+- steps = 32
+
+evaluate => 1-31.(step) : 1984 => 32.(step) : 39
+
+- Test Accuracy: 0.87
+- Test Loss: 0.37
+- Test Precision: 0.85
+- Test Recall: 0.90
+
+
+#### Confusion Matrix and Classification Report
+Below is the confusion matrix and classification report for the test data, which shows the model's performance in predicting two classes.
+
+<p align="center"> 
+ <img width="406" height="324" alt="Confusion Matrix" src="https://github.com/user-attachments/assets/5123bfd6-fc19-4d13-8395-399ecfa828d5" />
+ <img width="406" height="200" alt="Classification Report" src="https://github.com/user-attachments/assets/248ff276-5326-4856-b846-caf4d9df7f60" />
+</p>
+
+
+📌 Not: The **test set generator was configured with shuffle=False** to ensure that predictions align correctly with the true labels for accurate evaluation.
 
 ---
