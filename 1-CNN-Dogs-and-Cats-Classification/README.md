@@ -6,8 +6,19 @@
 This project uses a Convolutional Neural Network (CNN) to classify images of cats and dogs.
 The model was trained on the Kaggle Cats vs Dogs dataset using Google Colab.
 
-
 ## Table of Contents
+
+1. [Step 1: Dataset Download](#step-1-dataset-download)
+2. [Step 2: Data Preprocessing & Augmentation](#step-2-data-preprocessing--augmentation)
+    1. [📊 Class Distribution](#-class-distribution)
+    2. [Augmentation](#augmentation)
+3. [Step 3: 🔹 CNN Model Architecture](#step-3--cnn-model-architecture)
+4. [Step 4: Model Training](#step-4-model-training)
+5. [Step 5: Model Evaluation & Results](#step-5-model-evaluation--results)
+    1. [Results](#results)
+    2. [Evaluation](#evaluation)
+        1. [Confusion Matrix and Classification Report](#confusion-matrix-and-classification-report)
+
 
 
 
@@ -33,7 +44,7 @@ Samples from the dataset:
 Below are the class distributions for the training and test datasets used in this project:
 
 <p align="center"> 
- <img width="463" height="350" alt="Test Distribution" src="https://github.com/user-attachments/assets/bd50363e-803f-414d-8aa6-79b0bc2764ac" /> 
+ <img width="463" height="345" alt="Test Distribution" src="https://github.com/user-attachments/assets/bd50363e-803f-414d-8aa6-79b0bc2764ac" /> 
  <img width="464" height="345" alt="Training Distribution" src="https://github.com/user-attachments/assets/cc4d3dbf-492a-4445-8521-9b22a4c191c1" /> 
 </p>
 
