@@ -1,29 +1,37 @@
 # Dog🐶 and Cat🐱 Classification
 [![Kaggle](https://img.shields.io/badge/Kaggle-Dataset-blue?logo=kaggle)](https://www.kaggle.com/datasets/tongpython/cat-and-dog/data)
 
-🧠 Deep Learning Model
+## 🧠 Project Overview
 
 This project performs binary image classification to distinguish between cats and dogs using a **Convolutional Neural Network (CNN)** built with **TensorFlow and Keras.**
 The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Colab** environment.
 
-## Table of Contents
+## 📑 Table of Contents
 
-1. [Step 1: Dataset Download](#step-1-dataset-download)
-2. [Step 2: Data Preprocessing & Augmentation](#step-2-data-preprocessing--augmentation)
-    1. [📊 Class Distribution](#-class-distribution)
-    2. [Augmentation](#augmentation)
-3. [Step 3: 🔹 CNN Model Architecture](#step-3--cnn-model-architecture)
-4. [Step 4: Model Training](#step-4-model-training)
-5. [Step 5: Model Evaluation & Results](#step-5-model-evaluation--results)
-    1. [Results](#results)
-    2. [Evaluation](#evaluation)
-        1. [Confusion Matrix and Classification Report](#confusion-matrix-and-classification-report)
+1. [🧠 Project Overview](#-project-overview)
+2. [📂 Project Structure](#-project-structure)
+3. [Installation](#installation)
+4. [Dataset Setup](#dataset-setup)
+5. [📓 Model Development (Notebook)](#-model-development-notebook)
+    - [Step 1: Dataset Download](#step-1-dataset-download)
+    - [Step 2: Data Preprocessing & Augmentation](#step-2-data-preprocessing--augmentation)
+        - [📊 Class Distribution](#-class-distribution)
+        - [Augmentation](#augmentation)
+    - [Step 3: 🔹 CNN Model Architecture](#step-3--cnn-model-architecture)
+    - [Step 4: Model Training](#step-4-model-training)
+    - [Step 5: Model Evaluation & Results](#step-5-model-evaluation--results)
+        - [Results](#results)
+        - [Evaluation](#evaluation)
+            - [Confusion Matrix and Classification Report](#confusion-matrix-and-classification-report)
+6. [🧩 Modularization (src)](#-modularization-src)
+7. [Streamlit Application](#-streamlit-application)
+
 
 ---
 
-### 📂 Project Structure
+## 📂 Project Structure
 ```
-cat-dog-classifier/
+1-CNN-Dogs-and-Cats-Classification/
 ├── 📁 data/
 │ └── 📁 sample_images/ 
 │
@@ -45,15 +53,26 @@ cat-dog-classifier/
 ├── 📄 requirements.txt
 └── 📘 README.md 
 ```
-## Streamlit web application:
-<p align="center"> 
-<img width="618" height="238" alt="streamlit1" src="https://github.com/user-attachments/assets/87e8a90d-4732-4238-bb9d-ecca32e47833" />
-<img width="499" height="586" alt="streamlitTestCat" src="https://github.com/user-attachments/assets/49f8cd93-e3e0-485d-b101-9ed0c14d4d2c" />
-</p>
+
+> ⚠️ Note: The trained model file (`cat-and-dog.keras`) is not included in this repository due to size constraints.
+
+## Installation
+
+1. Click the link below to download the folder as a `.zip` file:  
+   [Download](https://download-directory.github.io/?url=https://github.com/havva-nur-ezginci/DeepLearning-Applications/tree/main/1-CNN-Dogs-and-Cats-Classification)
+
+2. Extract the zip file and place the folder wherever you like.
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## Step 1: Dataset Download
+## 📓 Model Development (Notebook)
+The initial development, including data exploration, preprocessing, and model training, was performed in `CNN_Dogs_and_Cats.ipynb`.  
+
+### Step 1: Dataset Download
 
 The dataset for cats and dogs was obtained from Kaggle. First, the Kaggle API key was uploaded to Colab (kaggle.json) to authenticate the account. Then, the dataset was downloaded using the Kaggle CLI:
 ```sh 
@@ -65,9 +84,9 @@ Samples from the dataset:
 <img width="804" height="185" alt="Image" src="https://github.com/user-attachments/assets/bba946c8-406f-4a45-baed-075c5daa1973" />
 
  ---
- ## Step 2: Data Preprocessing & Augmentation
+### Step 2: Data Preprocessing & Augmentation
 
-### 📊 Class Distribution
+#### 📊 Class Distribution
 
 Below are the class distributions for the training and test datasets used in this project:
 
@@ -78,7 +97,7 @@ Below are the class distributions for the training and test datasets used in thi
 
 The visualizations show that both datasets are balanced between the two classes (cats 🐱 and dogs 🐶), ensuring fair model training and evaluation.
 
-### Augmentation
+#### Augmentation
 
 **The dataset was loaded using `ImageDataGenerator` with the `flow_from_directory()` method.**
 
@@ -98,7 +117,7 @@ After preprocessing, the data distribution was as follows:
 **The ImageDataGenerator was used to create diverse and augmented datasets for model training and validation, ensuring efficient memory usage in Google Colab.**
 
 ---
-## Step 3: 🔹 CNN Model Architecture
+### Step 3: 🔹 CNN Model Architecture
 
 
 
@@ -117,7 +136,7 @@ The CNN model consists of:
 5. **Dense layers** for classification, including a **dropout layer (35%)** to prevent overfitting
 6. **Sigmoid** output layer for binary classification (Cat vs Dog)
 ---
-## Step 4: Model Training 
+### Step 4: Model Training 
 The CNN model was trained using the **Keras Sequential API** for binary classification of cats and dogs.
 
 **Training Configuration** :
@@ -136,9 +155,9 @@ Training was performed on Google Colab’s GPU runtime, which significantly acce
 The model achieved stable convergence with gradually decreasing validation loss, indicating effective learning and minimal overfitting.
 
 ---
-## Step 5: Model Evaluation & Results
+### Step 5: Model Evaluation & Results
 
-### Results 
+#### Results 
 
 The key metrics monitored during training were **Accuracy, Loss, Precision and Recall**.
 
@@ -154,7 +173,7 @@ The key metrics monitored during training were **Accuracy, Loss, Precision and R
 
 **Precision & Recall**: Both metrics gradually improved, reaching ~0.85–0.90, which demonstrates a balanced ability to correctly identify both cats and dogs.
 
-### Evaluation
+#### Evaluation
 
 Model results for test data : 
 - Total test image = 2023
@@ -170,7 +189,7 @@ evaluate => 1-31.(step) : 1984 => 32.(step) : 39
 - Test Recall: 0.90
 
 
-#### Confusion Matrix and Classification Report
+##### Confusion Matrix and Classification Report
 Below is the confusion matrix and classification report for the test data, which shows the model's performance in predicting two classes.
 
 <p align="center"> 
@@ -189,3 +208,29 @@ Below is the confusion matrix and classification report for the test data, which
 </p>
 
 ---
+
+## 🧩 Modular Code (src)
+The codebase was refactored into modular scripts under the `src/` directory to ensure scalability and reusability:
+- `prepare_data.py` – The dataset is downloaded using the Kaggle API key.
+- `train.py` – Train and save the CNN model  
+- `evaluate.py` – Evaluate performance on validation/test sets  
+- `predict.py` – Make predictions on unseen images  
+- `model.py` – Define and compile the CNN architecture
+  
+---
+## 🌐 Streamlit Application
+The interactive web interface is built using Streamlit (`app/app.py`).
+
+Run the app locally:
+```bash
+streamlit run app/app.py
+```
+
+<p align="center"> 
+<img width="618" height="238" alt="streamlit" src="https://github.com/user-attachments/assets/87e8a90d-4732-4238-bb9d-ecca32e47833" />
+<img width="499" height="586" alt="streamlitTestCat" src="https://github.com/user-attachments/assets/49f8cd93-e3e0-485d-b101-9ed0c14d4d2c" />
+</p>
+
+
+---
+
