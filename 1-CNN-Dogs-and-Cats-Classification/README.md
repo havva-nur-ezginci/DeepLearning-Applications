@@ -3,8 +3,8 @@
 
 🧠 Deep Learning Model
 
-This project uses a Convolutional Neural Network (CNN) to classify images of cats and dogs.
-The model was trained on the Kaggle Cats vs Dogs dataset using Google Colab.
+This project performs binary image classification to distinguish between cats and dogs using a **Convolutional Neural Network (CNN)** built with **TensorFlow and Keras.**
+The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Colab** environment.
 
 ## Table of Contents
 
@@ -19,9 +19,37 @@ The model was trained on the Kaggle Cats vs Dogs dataset using Google Colab.
     2. [Evaluation](#evaluation)
         1. [Confusion Matrix and Classification Report](#confusion-matrix-and-classification-report)
 
+---
 
-
-
+### 📂 Project Structure
+```
+cat-dog-classifier/
+├── 📁 data/
+│ └── 📁 sample_images/ 
+│
+├── 🧠 CNN-Dogs-and-Cats.ipynb # Original Jupyter Notebook (Google Colab version)
+│
+├── 📁 src/ 
+│ ├── train.py 
+│ ├── evaluate.py 
+│ ├── predict.py
+| ├── prepare_data.py
+│ └── model.py 
+│
+├── 🌐 app/ # Streamlit web application
+│ └── app.py 
+│
+├── 🧩 models/ 
+│ └── cat-and-dog.keras 
+│
+├── 📄 requirements.txt
+└── 📘 README.md 
+```
+## Streamlit web application:
+<p align="center"> 
+<img width="618" height="238" alt="streamlit1" src="https://github.com/user-attachments/assets/87e8a90d-4732-4238-bb9d-ecca32e47833" />
+<img width="499" height="586" alt="streamlitTestCat" src="https://github.com/user-attachments/assets/49f8cd93-e3e0-485d-b101-9ed0c14d4d2c" />
+</p>
 
 ---
 
