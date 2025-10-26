@@ -1,7 +1,9 @@
 "# DeepLearning-Applications" 
 ---
 ## DL Resources
+
 https://poloclub.github.io/cnn-explainer/ 
+
 https://netron.app/
 
 ---
