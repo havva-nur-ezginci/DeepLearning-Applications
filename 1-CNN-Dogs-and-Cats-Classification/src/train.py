@@ -2,7 +2,7 @@
 train.py
 Training script that loads images from a directory, trains the model and saves it.
 Usage:
-    python src/train.py --data_dir ../project_name/data/training_set/training_set --model_out ../models/cat-and-dog.keras
+    python src/train.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/training_set/training_set --model_out ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
 """
 
 import argparse
@@ -13,8 +13,8 @@ import os
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--data_dir", type=str, default="../data/training_set/training_set", help="Path to training directory (with subfolders per class)")
-    p.add_argument("--model_out", type=str, default="../models/cat-and-dog.keras", help="Output path for saved model")
+    p.add_argument("--data_dir", type=str, default="../1-CNN-Dogs-and-Cats-Classification/data/training_set/training_set", help="Path to training directory (with subfolders per class)")
+    p.add_argument("--model_out", type=str, default="../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras", help="Output path for saved model")
     p.add_argument("--img_size", type=int, nargs=2, default=[224,224], help="Image target size")
     p.add_argument("--batch_size", type=int, default=32, help="Batch size")
     p.add_argument("--epochs", type=int, default=100, help="Number of epochs")

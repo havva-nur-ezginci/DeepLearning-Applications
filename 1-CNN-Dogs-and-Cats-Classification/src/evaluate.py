@@ -2,7 +2,7 @@
 evaluate.py
 Evaluate a saved model on a dataset (test_set).
 Usage:
-    python src/evaluate.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/test_set/test_set --model_path ../models/cat-and-dog.keras
+    python src/evaluate.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/test_set/test_set --model_path ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
 """
 
 import argparse

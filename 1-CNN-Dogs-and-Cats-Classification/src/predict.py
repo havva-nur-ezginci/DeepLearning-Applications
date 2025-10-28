@@ -2,7 +2,9 @@
 predict.py
 Load a saved model and run prediction on a single image.
 Usage:
-    python src/predict.py --image ../project_name/data/sample_images/dog1.jpg --model ../cat_dog_project/models/cat-and-dog.keras
+    python src/predict.py --image ../1-CNN-Dogs-and-Cats-Classification/data/sample_images/dog1.jpg
+or
+    python src/predict.py --image ../1-CNN-Dogs-and-Cats-Classification/data/sample_images/dog1.jpg --model ../cat_dog_project/models/cat-and-dog.keras
 """
 
 import argparse
