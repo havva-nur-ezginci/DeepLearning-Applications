@@ -10,9 +10,8 @@ The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Cola
 
 1. [🧠 Project Overview](#-project-overview)
 2. [📂 Project Structure](#-project-structure)
-3. [Installation](#installation)
-4. [Dataset Setup](#dataset-setup)
-5. [📓 Model Development (Notebook)](#-model-development-notebook)
+3. [Usage](#usage) 
+4. [📓 Model Development (Notebook)](#-model-development-notebook)
     - [Step 1: Dataset Download](#step-1-dataset-download)
     - [Step 2: Data Preprocessing & Augmentation](#step-2-data-preprocessing--augmentation)
         - [📊 Class Distribution](#-class-distribution)
@@ -23,9 +22,8 @@ The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Cola
         - [Results](#results)
         - [Evaluation](#evaluation)
             - [Confusion Matrix and Classification Report](#confusion-matrix-and-classification-report)
-6. [🧩 Modularization (src)](#-modularization-src)
-7. [Streamlit Application](#-streamlit-application)
-
+5. [🧩Modularization (src)](#-modular-code-src)
+6. [Streamlit Application](#-streamlit-application)
 
 ---
 
@@ -35,7 +33,7 @@ The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Cola
 ├── 📁 data/
 │ └── 📁 sample_images/ 
 │
-├── 🧠 CNN-Dogs-and-Cats.ipynb # Original Jupyter Notebook (Google Colab version)
+├── 🧠 CNN-Dogs-and-Cats.ipynb # Jupyter Notebook (Google Colab version)
 │
 ├── 📁 src/ 
 │ ├── train.py 
@@ -54,17 +52,63 @@ The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Cola
 └── 📘 README.md 
 ```
 
-> ⚠️ Note: The trained model file (`cat-and-dog.keras`) is not included in this repository due to size constraints.
+> ⚠️ Note: The trained model file (`cat-and-dog.keras`) is not included in this repository due to size constraints. However, you can download the model from my Hugging Face link. Please refer to the [Usage](#usage) section for details.
 
-## Installation
+## Usage
+<details> 
+    <summary><h3>Step-by-step usage details</h3></summary>
 
-1. Click the link below to download the folder as a `.zip` file:  
+  <br>
+
+**1- To download this project's folder as a `.zip` file, click the link below:**
    [Download](https://download-directory.github.io/?url=https://github.com/havva-nur-ezginci/DeepLearning-Applications/tree/main/1-CNN-Dogs-and-Cats-Classification)
 
-2. Extract the zip file and place the folder wherever you like.
+   
 
+**2-Install the dependencies**
+   
 ```bash
 pip install -r requirements.txt
+```
+
+**3- Prepare Data** : Downloading a dataset using the Kaggle API with the personal kaggle.json file.
+```
+python src/prepare_data.py
+```
+⚠️ Note: When using it, do not forget to add your kaggle.json file. 
+
+**4- Train:**
+```
+python src/train.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/training_set/training_set --model_out ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
+```
+
+**5- Evaluate:**
+```
+ python src/evaluate.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/test_set/test_set --model_path ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
+```
+
+**6- Predict:**
+```
+python src/predict.py --image ../1-CNN-Dogs-and-Cats-Classification/data/sample_images/dog1.jpg --model ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
+```
+</details>
+
+#### 📥 Model Download
+
+The trained CNN model used in this project is publicly available on Hugging Face:
+
+➡️ [Download from Hugging Face](https://huggingface.co/havvanur92/dog-cat-cnn/resolve/main/cat-and-dog.keras)
+
+To load the model in your code:
+```python
+from tensorflow import keras
+from huggingface_hub import hf_hub_download
+
+# Download the model file from Hugging Face
+model_path = hf_hub_download(repo_id="havvanur92/dog-cat-cnn", filename="cat-and-dog.keras")
+
+# Load the model
+model = keras.models.load_model(model_path)
 ```
 
 ---
@@ -118,7 +162,6 @@ After preprocessing, the data distribution was as follows:
 
 ---
 ### Step 3: 🔹 CNN Model Architecture
-
 
 
 <details> 
