@@ -3,15 +3,17 @@
 
 ## 🧠 Project Overview
 
-This project performs binary image classification to distinguish between cats and dogs using a **Convolutional Neural Network (CNN)** built with **TensorFlow and Keras.**
-The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Colab** environment.
+- This project focuses on binary image classification to distinguish between cats and dogs using a **Convolutional Neural Network (CNN)** implemented with **TensorFlow and Keras**. The model was trained on the Kaggle Cats and Dogs dataset within a **Google Colab** environment, achieving effective feature learning and robust classification performance.
+- The project utilized **ImageDataGenerator** with the **flow_from_directory()** function in a Google Colab environment, which helped address memory limitations while applying **data augmentation** techniques.
+- During evaluation, the model achieved **Test Accuracy: 0.87, Precision: 0.85 and Recall: 0.90** on the test dataset.
+- Initially developed in a **Jupyter Notebook**, the codebase was later refactored into a modular structure. Additionally, a **Streamlit web interface (app.py)** was created to allow easy interaction with the model, making it user-friendly for testing and exploration.
+
 
 ## 📑 Table of Contents
 
 1. [🧠 Project Overview](#-project-overview)
 2. [📂 Project Structure](#-project-structure)
-3. [Usage](#usage) 
-4. [📓 Model Development (Notebook)](#-model-development-notebook)
+3. [📓 Model Development (Notebook)](#-model-development-notebook)
     - [Step 1: Dataset Download](#step-1-dataset-download)
     - [Step 2: Data Preprocessing & Augmentation](#step-2-data-preprocessing--augmentation)
         - [📊 Class Distribution](#-class-distribution)
@@ -22,7 +24,8 @@ The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Cola
         - [Results](#results)
         - [Evaluation](#evaluation)
             - [Confusion Matrix and Classification Report](#confusion-matrix-and-classification-report)
-5. [🧩Modularization (src)](#-modular-code-src)
+4. [🧩Modularization (src)](#-modular-code-src)
+5. [Usage](#usage)
 6. [Streamlit Application](#-streamlit-application)
 
 ---
@@ -54,64 +57,9 @@ The model was trained on the **Kaggle Cats and Dogs dataset** in a **Google Cola
 
 > ⚠️ Note: The trained model file (`cat-and-dog.keras`) is not included in this repository due to size constraints. However, you can download the model from my Hugging Face link. Please refer to the [Usage](#usage) section for details.
 
-## Usage
-<details> 
-    <summary><h3>Step-by-step usage details</h3></summary>
-
-  <br>
-
-**1- To download this project's folder as a `.zip` file, click the link below:**
-   [Download](https://download-directory.github.io/?url=https://github.com/havva-nur-ezginci/DeepLearning-Applications/tree/main/1-CNN-Dogs-and-Cats-Classification)
-
-   
-
-**2-Install the dependencies**
-   
-```bash
-pip install -r requirements.txt
-```
-
-**3- Prepare Data** : Downloading a dataset using the Kaggle API with the personal kaggle.json file.
-```
-python src/prepare_data.py
-```
-⚠️ Note: When using it, do not forget to add your kaggle.json file. 
-
-**4- Train:**
-```
-python src/train.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/training_set/training_set --model_out ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
-```
-
-**5- Evaluate:**
-```
- python src/evaluate.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/test_set/test_set --model_path ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
-```
-
-**6- Predict:**
-```
-python src/predict.py --image ../1-CNN-Dogs-and-Cats-Classification/data/sample_images/dog1.jpg --model ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
-```
-</details>
-
-#### 📥 Model Download
-
-The trained CNN model used in this project is publicly available on Hugging Face:
-
-➡️ [Download from Hugging Face](https://huggingface.co/havvanur92/dog-cat-cnn/resolve/main/cat-and-dog.keras)
-
-To load the model in your code:
-```python
-from tensorflow import keras
-from huggingface_hub import hf_hub_download
-
-# Download the model file from Hugging Face
-model_path = hf_hub_download(repo_id="havvanur92/dog-cat-cnn", filename="cat-and-dog.keras")
-
-# Load the model
-model = keras.models.load_model(model_path)
-```
 
 ---
+
 
 ## 📓 Model Development (Notebook)
 The initial development, including data exploration, preprocessing, and model training, was performed in `CNN_Dogs_and_Cats.ipynb`.  
@@ -259,8 +207,66 @@ The codebase was refactored into modular scripts under the `src/` directory to e
 - `evaluate.py` – Evaluate performance on validation/test sets  
 - `predict.py` – Make predictions on unseen images  
 - `model.py` – Define and compile the CNN architecture
-  
 ---
+## Usage
+<details> 
+    <summary><h3>Step-by-step usage details</h3></summary>
+
+  <br>
+
+**1- To download this project's folder as a `.zip` file, click the link below:**
+   [Download](https://download-directory.github.io/?url=https://github.com/havva-nur-ezginci/DeepLearning-Applications/tree/main/1-CNN-Dogs-and-Cats-Classification)
+
+   
+
+**2-Install the dependencies**
+   
+```bash
+pip install -r requirements.txt
+```
+
+**3- Prepare Data** : Downloading a dataset using the Kaggle API with the personal kaggle.json file.
+```
+python src/prepare_data.py
+```
+⚠️ Note: When using it, do not forget to add your kaggle.json file. 
+
+**4- Train:**
+```
+python src/train.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/training_set/training_set --model_out ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
+```
+
+**5- Evaluate:**
+```
+ python src/evaluate.py --data_dir ../1-CNN-Dogs-and-Cats-Classification/data/test_set/test_set --model_path ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
+```
+
+**6- Predict:**
+```
+python src/predict.py --image ../1-CNN-Dogs-and-Cats-Classification/data/sample_images/dog1.jpg --model ../1-CNN-Dogs-and-Cats-Classification/models/cat-and-dog.keras
+```
+</details>
+
+#### 📥 Model Download
+
+The trained CNN model used in this project is publicly available on Hugging Face:
+
+➡️ [Download from Hugging Face](https://huggingface.co/havvanur92/dog-cat-cnn/resolve/main/cat-and-dog.keras)
+
+To load the model in your code:
+```python
+from tensorflow import keras
+from huggingface_hub import hf_hub_download
+
+# Download the model file from Hugging Face
+model_path = hf_hub_download(repo_id="havvanur92/dog-cat-cnn", filename="cat-and-dog.keras")
+
+# Load the model
+model = keras.models.load_model(model_path)
+```
+
+---
+
 ## 🌐 Streamlit Application
 The interactive web interface is built using Streamlit (`app/app.py`).
 
@@ -268,6 +274,9 @@ Run the app locally:
 ```bash
 streamlit run app/app.py
 ```
+You can now view your Streamlit app in your browser.
+
+- Local URL: http://localhost:8501
 
 <p align="center"> 
 <img width="618" height="238" alt="streamlit" src="https://github.com/user-attachments/assets/87e8a90d-4732-4238-bb9d-ecca32e47833" />
