@@ -4,7 +4,32 @@
 
 The goal of this project is to analyze and forecast household energy consumption using a **Recurrent Neural Network (RNN)** model.
 
-# Table of Content
+
+## 📚 Table of Contents
+
+- [⚡ Dataset Overview](#dataset-overview)
+- [🧹 Data Preparation](#data-preparation)
+  - [1- Date-Time Parsing & Indexing](#1--date-time-parsing--indexing)
+  - [2-⏱️ Resampling to Hourly Frequency](2--resampling-to-hourly-frequency)
+  - [3-🚧 Missing Value Imputation](#3--missing-value-imputation)
+- [🧠 Feature Engineering](#feature-engineering)
+  - [⏰ Time-based Features](#-time-based-features)
+  - [Feature Selection](#feature-selection)
+- [📊 Visualizing Time-Based Patterns](#-visualizing-time-based-patterns)
+  - [Daily Cycle of Energy Consumption](#daily-cycle-of-energy-consumption)
+  - [Lag Correlation Analysis](#lag-correlation-analysis)
+- [⚙️ Data Preparation for Modeling](-data-preparation-for-modeling)
+  - [Train-Test Split](#-train-test-split)
+  - [📏 Data Normalization / Scaling](#-data-normalization--scaling)
+  - [Lookback Feature Creation](#lookback-feature-creation)
+- [🏗️ RNN Model Architecture & Training](-rnn-model-architecture--training)
+  - [📉 Training Loss](#-training-loss)
+- [📈 Model Evaluation](#model-evaluation)
+- [🔹 Predictions & Metrics](#-predictions--metrics)
+  - [Predictions Metrics](#-predictions-metrics)
+  - [Prediction Plot](#-prediction-plot)
+  - [⚡ Global Active Power Prediction](#-global-active-power-prediction)
+
 
 ----
 
@@ -85,11 +110,11 @@ These features help the model understand when energy consumption increases or de
 
 Plotted average Global_active_power by hour to observe daily energy usage trends. 
 
-#### **Daily Cycle of Energy Consumption:** 
+#### Daily Cycle of Energy Consumption:
 
 <img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/8b3a92a4-83a0-4804-821e-0ca7781659df" />
 
-#### 📊 Lag Correlation Analysis
+#### Lag Correlation Analysis
 
 <img width="750" height="310" alt="Image" src="https://github.com/user-attachments/assets/99236db7-f3ae-425b-8060-a57ab680d198" />
 
@@ -101,7 +126,7 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 
 ----
 
-## Data Preparation
+## ⚙️ Data Preparation for Modeling
 
 ### 🧩 Train-Test Split
 
@@ -110,7 +135,7 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
   - **Validation set**: 15% 
   - **Test set**: 15%
 
-### Data Normalization / Scaling
+### 📏 Data Normalization / Scaling
 
 - **StandardScaler** was used to normalize features (mean = 0, std = 1).
 - **The scaler was fitted only on the training set to avoid data leakage.**
@@ -190,4 +215,5 @@ Shows true vs. predicted values on the test set :
  
 
   
+
 
