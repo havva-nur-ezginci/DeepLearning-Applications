@@ -18,7 +18,7 @@ The goal of this project is to analyze and forecast household energy consumption
 - [📊 Visualizing Time-Based Patterns](#-visualizing-time-based-patterns)
   - [Daily Cycle of Energy Consumption](#daily-cycle-of-energy-consumption)
   - [Lag Correlation Analysis](#lag-correlation-analysis)
-- [⚙️ Data Preparation for Modeling](#-data-preparation-for-modeling)
+- [⚙️ Data Preparation for Modeling](#data-preparation-for-modeling)
   - [Train-Test Split](#-train-test-split)
   - [📏 Data Normalization / Scaling](#-data-normalization--scaling)
   - [Lookback Feature Creation](#lookback-feature-creation)
@@ -150,7 +150,7 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 
 ----
 
-## ⚙️ Data Preparation for Modeling
+##  Data Preparation for Modeling
 
 ### 🧩 Train-Test Split
 
@@ -171,7 +171,7 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 
 ----
 
-##🏗️ RNN Model Architecture & Training
+## 🏗️ RNN Model Architecture & Training
 
 - **Model** : Sequential RNN with two layers: Two-layer **SimpleRNN** with **ReLU** activations and **Dropout** for regularization, followed by a **Dense** output layer for regression.
 - **Loss**: Mean Squared Error (MSE)
@@ -246,6 +246,7 @@ Shows true vs. predicted values on the test set :
  
 
   
+
 
 
 
