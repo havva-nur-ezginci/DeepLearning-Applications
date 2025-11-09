@@ -1,6 +1,6 @@
 "# DeepLearning-Applications" 
 ---
-# DL Resources
+## DL Resources
 
 https://poloclub.github.io/cnn-explainer/ 
 
@@ -8,13 +8,19 @@ https://netron.app/
 
 ---
 
-# Table of Contents
-- [1-CNN-Dogs-and-Cats-Classification](#dog---cat-classification-with-cnn)
+## Table of Contents
+- [CNN](#cnn)
+  - [1-CNN-Dogs-and-Cats-Classification](#dog---cat-classification-with-cnn)
+- [RNN](#rnn)
+  - [1-RNN-Household-Electric-Power-Consumption](#-household-electric-power-consumption-forecasting-with-rnn)
+
+---
+# CNN
 
 
 ---
 
-# Dog🐶 - Cat🐱 Classification with CNN
+## Dog🐶 - Cat🐱 Classification with CNN
 [![Kaggle](https://img.shields.io/badge/Kaggle-Dataset-blue?logo=kaggle)](https://www.kaggle.com/datasets/tongpython/cat-and-dog/data)   
 
 > **For more detailed information, please refer to the**
@@ -74,5 +80,65 @@ Below is the **confusion matrix and classification report** of the model’s tes
 </details>
 
 > ⚠️ Note: The trained model file (`cat-and-dog.keras`) is not included in this repository due to size constraints. However, you can download the model from my Hugging Face link. For details, see the project's **README → Usage** section.
+---
+
+# RNN
 
 ---
+
+## ⚡ Household Electric Power Consumption Forecasting with RNN
+
+[![Kaggle](https://img.shields.io/badge/Kaggle-Dataset-blue?logo=kaggle)](https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set)
+
+> **For more detailed information, please refer to the**
+> [➡️ **Read the full README**](https://github.com/havva-nur-ezginci/DeepLearning-Applications/tree/main/1-RNN-Household-Electric-Power-Consumption)
+
+---
+
+**Project Goal**: Forecast household electricity consumption using a **Recurrent Neural Network (RNN)**.
+
+### 📌 Key Highlights
+- **Dataset**: Minute-level electricity consumption from Dec 2006 – Nov 2010 (~2 million records).
+- **Target**: **`Global_active_power (kW)`**
+- **Time Resolution**: Resampled to **hourly averages** for easier analysis and reduced missing data.
+
+### 🧹 Data Processing & Features
+- **Datetime parsing and indexing**
+- **Missing value handling**: Interpolation for short gaps (≤3h), removal for longer gaps.
+- **Feature engineering**: Added time-based features (`hour`,`is_weekend`,`hour_sin`,`hour_cos`) to capture daily and weekly patterns.
+- **Feature selection**: Dropped low-correlation columns (`dayofweek`,`month`).
+- **Lag analysis**: Determined 24-hour lookback window for RNN sequences.
+- **24-hour lookback window predicting the next hour**
+- Data split: **70% train / 15% validation / 15% test**
+- Feature scaling using **StandardScaler** (fit on training set only)
+
+ ### 🏗️ Model Overview
+- **Architecture**: Two-layer **SimpleRNN** with **ReLU** activations and **Dropout** regularization, followed by Dense output.
+- **Loss / Metrics**: MSE, MAE
+- **Optimizer**: Adam with **gradient clipping (clipnorm=2.0)**
+- **Training**: Early stopping based on validation loss, model checkpointing.
+
+### 📊 Results
+
+**Predictions** were generated for the training, validation, and test sets using the **best saved model**. The results were converted back to the **original scale** and evaluated using **MSE, RMSE, and MAE** metrics.
+
+  
+| Dataset     | MSE   | RMSE  | MAE   |
+|------------|-------|-------|-------|
+| Train      | 0.264 | 0.514 | 0.351 |
+| Validation | 0.281 | 0.530 | 0.368 |
+| Test       | 0.222 | 0.471 | 0.330 |
+
+<img width="85%" height="420" alt="Global Active Power Prediction Plot" src="https://github.com/user-attachments/assets/86045e5a-5f32-432c-992e-eecb8e6c6416" />
+
+
+### Dependencies
+- Python 3.x, TensorFlow 2.x
+- Libraries: `numpy`,`pandas`,`matplotlib`,`seaborn`,`scikit-learn`,`tensorflow/keras`
+- Developed on **Google Colab**
+
+```sh
+pip install numpy pandas matplotlib seaborn scikit-learn tensorflow
+```
+
+ 
