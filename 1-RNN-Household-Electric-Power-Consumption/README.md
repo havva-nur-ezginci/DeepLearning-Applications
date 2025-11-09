@@ -4,16 +4,16 @@
 
 The goal of this project is to analyze and forecast household energy consumption using a **Recurrent Neural Network (RNN)** model.
 
-
 ## 📚 Table of Contents
 
-- [⚡ Dataset Overview](#dataset-overview)
-- [🧹 Data Preparation](#data-preparation)
-  - [1- Date-Time Parsing & Indexing](#1--date-time-parsing--indexing)
+- [Dependencies & Environment](#dependencies--environment)
+- [Dataset Overview](#dataset-overview)
+- [🧹 Data Preparation](#-data-preparation)
+  - [1-   Date-Time Parsing & Indexing](#1--date-time-parsing--indexing)
   - [2-⏱️ Resampling to Hourly Frequency](2--resampling-to-hourly-frequency)
   - [3-🚧 Missing Value Imputation](#3--missing-value-imputation)
-- [🧠 Feature Engineering](#feature-engineering)
-  - [⏰ Time-based Features](#-time-based-features)
+- [Feature Engineering](#-feature-engineering)
+  - [Time-based Features](#-time-based-features)
   - [Feature Selection](#feature-selection)
 - [📊 Visualizing Time-Based Patterns](#-visualizing-time-based-patterns)
   - [Daily Cycle of Energy Consumption](#daily-cycle-of-energy-consumption)
@@ -25,11 +25,35 @@ The goal of this project is to analyze and forecast household energy consumption
 - [🏗️ RNN Model Architecture & Training](-rnn-model-architecture--training)
   - [📉 Training Loss](#-training-loss)
 - [📈 Model Evaluation](#model-evaluation)
-- [🔹 Predictions & Metrics](#-predictions--metrics)
+- [Predictions & Metrics](#-predictions--metrics)
   - [Predictions Metrics](#-predictions-metrics)
   - [Prediction Plot](#-prediction-plot)
   - [⚡ Global Active Power Prediction](#-global-active-power-prediction)
 
+
+----
+## Dependencies & Environment
+
+### 📦 Main Dependencies
+
+| Library | Purpose |
+|----------|----------|
+| **numpy**, **pandas** | Data manipulation and analysis |
+| **matplotlib**, **seaborn** | Data visualization |
+| **scikit-learn** | Data scaling and evaluation metrics |
+| **tensorflow / keras** | Building and training the RNN model |
+| **warnings** | Suppressing unnecessary warnings during training |
+
+🧠 **Environment:** Google Colab (Python 3.x, TensorFlow 2.x)
+
+🔧 Installation
+
+If running locally, install dependencies with:
+
+```sh
+pip install numpy pandas matplotlib seaborn scikit-learn tensorflow
+
+```
 
 ----
 
@@ -47,7 +71,7 @@ The **Household Electric Power Consumption** dataset contains minute-level measu
 
 ----
 
-## Data Preparation
+## 🧹 Data Preparation
 
 ### 1- Date-Time Parsing & Indexing
 
@@ -83,7 +107,7 @@ Some hours had missing values after resampling.
 
 ---- 
 
-## Feature Engineering
+## 🧠 Feature Engineering
 
 ### ⏰ Time-based Features
 
@@ -112,11 +136,11 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 
 #### Daily Cycle of Energy Consumption:
 
-<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/8b3a92a4-83a0-4804-821e-0ca7781659df" />
+<img width="75%" height="300" alt="Image" src="https://github.com/user-attachments/assets/8b3a92a4-83a0-4804-821e-0ca7781659df" />
 
 #### Lag Correlation Analysis
 
-<img width="750" height="310" alt="Image" src="https://github.com/user-attachments/assets/99236db7-f3ae-425b-8060-a57ab680d198" />
+<img width="75%" height="310" alt="Image" src="https://github.com/user-attachments/assets/99236db7-f3ae-425b-8060-a57ab680d198" />
 
 - Shows the correlation of past Global_active_power values (1–24 hours) with the target.
 
@@ -145,6 +169,8 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 - Input shape transformed from **2D** `(samples, features)`  → **3D** `(samples, timesteps, features)`
 - Used a **24-hour lookback window** `(timesteps = 24)` to predict **1 hour ahead** `(horizon = 1)`. A new sample is created by sliding 1 hour each time.
 
+----
+
 ## 🏗️ RNN Model Architecture & Training
 
 - **Model** : Sequential RNN with two layers: Two-layer **SimpleRNN** with **ReLU** activations and **Dropout** for regularization, followed by a **Dense** output layer for regression.
@@ -165,20 +191,25 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 - **Training and validation loss (MSE)** over epochs.
 - **Early stopping** triggered when validation loss stopped improving, indicating stable training.
 
-<img width="699" height="393" alt="Image" src="https://github.com/user-attachments/assets/7e24c147-5f19-498f-b2f9-8034dbf8c824" />
+<img width="75%" height="393" alt="Image" src="https://github.com/user-attachments/assets/7e24c147-5f19-498f-b2f9-8034dbf8c824" />
+
+----
 
 ## Model Evaluation
 
 - Loaded the **best saved model** and evaluated on validation and test sets.
 
-**Results:**
+**📊 Model Results**
 
-- **Validation:** MSE = 0.326, MAE = 0.396
-- **Test:** MSE = 0.257, MAE = 0.355
+| Dataset     | MSE   | MAE   |
+|--------------|-------|-------|
+| Validation   | 0.326 | 0.396 |
+| Test         | 0.257 | 0.355 |
+
 
 **Shows that the model performs well and generalizes to unseen data.**
 
-
+----
 ## 🔹 Predictions & Metrics
 
 - Used the **best saved model** to make **predictions** on **train, validation, and test sets**.
@@ -202,18 +233,19 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 
 Shows true vs. predicted values on the test set :
 
-<img width="981" height="374" alt="Image" src="https://github.com/user-attachments/assets/2d33b423-0c86-44b2-9356-2d936c9639b7" />
+<img width="75%" height="374" alt="Image" src="https://github.com/user-attachments/assets/2d33b423-0c86-44b2-9356-2d936c9639b7" />
 
 
 ### 📊 Global Active Power Prediction
 
 **Shows true vs. predicted values for train, validation, and test sets.**
 
-<img width="1000" height="420" alt="Image" src="https://github.com/user-attachments/assets/86045e5a-5f32-432c-992e-eecb8e6c6416" />
+<img width="75%" height="420" alt="Image" src="https://github.com/user-attachments/assets/86045e5a-5f32-432c-992e-eecb8e6c6416" />
 
 
  
 
   
+
 
 
