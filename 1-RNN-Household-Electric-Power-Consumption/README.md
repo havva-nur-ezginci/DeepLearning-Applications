@@ -87,11 +87,11 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 
 #### **Daily Cycle of Energy Consumption:** 
 
-<img width="989" height="490" alt="Image" src="https://github.com/user-attachments/assets/8b3a92a4-83a0-4804-821e-0ca7781659df" />
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/8b3a92a4-83a0-4804-821e-0ca7781659df" />
 
 #### 📊 Lag Correlation Analysis
 
-<img width="826" height="300" alt="Image" src="https://github.com/user-attachments/assets/99236db7-f3ae-425b-8060-a57ab680d198" />
+<img width="750" height="310" alt="Image" src="https://github.com/user-attachments/assets/99236db7-f3ae-425b-8060-a57ab680d198" />
 
 - Shows the correlation of past Global_active_power values (1–24 hours) with the target.
 
@@ -118,14 +118,76 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 ### Lookback Feature Creation
 - Created **sequences (time windows)** from the scaled data for RNN input.
 - Input shape transformed from **2D** `(samples, features)`  → **3D** `(samples, timesteps, features)`
-- Used a **24-hour lookback window** `(timesteps = 24)` to predict **1 hour ahead** `(horizon = 1)`
+- Used a **24-hour lookback window** `(timesteps = 24)` to predict **1 hour ahead** `(horizon = 1)`. A new sample is created by sliding 1 hour each time.
+
+## 🏗️ RNN Model Architecture & Training
+
+- **Model** : Sequential RNN with two layers: Two-layer **SimpleRNN** with **ReLU** activations and **Dropout** for regularization, followed by a **Dense** output layer for regression.
+- **Loss**: Mean Squared Error (MSE)
+- **Metrics**: Mean Absolute Error (MAE)
+- **Optimizer**: Adam (`learning_rate=0.001`) with **gradient clipping** (`clipnorm=2.0`) to prevent **exploding gradients** and ensure stable training.
+
+**Notes**: `tanh and sigmoid` were tested, but `ReLU` gave better performance.
+
+**Training Callbacks**:
+
+- **EarlyStopping** : (patience=8)
+- **ModelCheckpoint**: **Save best model** based on validation loss
+- **ReduceLROnPlateau**: **Reduce LR** if val_loss plateaus
+
+### 📈 Training Loss
+
+- **Training and validation loss (MSE)** over epochs.
+- **Early stopping** triggered when validation loss stopped improving, indicating stable training.
+
+<img width="699" height="393" alt="Image" src="https://github.com/user-attachments/assets/7e24c147-5f19-498f-b2f9-8034dbf8c824" />
+
+## Model Evaluation
+
+- Loaded the **best saved model** and evaluated on validation and test sets.
+
+**Results:**
+
+- **Validation:** MSE = 0.326, MAE = 0.396
+- **Test:** MSE = 0.257, MAE = 0.355
+
+**Shows that the model performs well and generalizes to unseen data.**
 
 
+## 🔹 Predictions & Metrics
+
+- Used the **best saved model** to make **predictions** on **train, validation, and test sets**.
+
+- Converted predicted and actual values back to **original scale** using **inverse transform**.
+
+- Calculated performance metrics for each set:
+       - **MSE, RMSE, and MAE**
+
+### 📊 Predictions Metrics
+
+| Dataset     | MSE   | RMSE  | MAE   |
+|------------|-------|-------|-------|
+| Train      | 0.264 | 0.514 | 0.351 |
+| Validation | 0.281 | 0.530 | 0.368 |
+| Test       | 0.222 | 0.471 | 0.330 |
+
+- The model performs well on both **seen (train)** and **unseen (validation/test)** data, showing good generalization.
+
+### 📉 Prediction Plot
+
+Shows true vs. predicted values on the test set :
+
+<img width="981" height="374" alt="Image" src="https://github.com/user-attachments/assets/2d33b423-0c86-44b2-9356-2d936c9639b7" />
 
 
+### 📊 Global Active Power Prediction
 
+**Shows true vs. predicted values for train, validation, and test sets.**
+
+<img width="1000" height="420" alt="Image" src="https://github.com/user-attachments/assets/86045e5a-5f32-432c-992e-eecb8e6c6416" />
 
 
  
 
   
+
