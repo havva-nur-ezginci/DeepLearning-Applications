@@ -22,7 +22,7 @@ The goal of this project is to analyze and forecast household energy consumption
   - [Train-Test Split](#-train-test-split)
   - [📏 Data Normalization / Scaling](#-data-normalization--scaling)
   - [Lookback Feature Creation](#lookback-feature-creation)
-- [🏗️ RNN Model Architecture & Training](#-rnn-model-architecture--training)
+- [🏗️ RNN Model Architecture & Training](#rnn-model-architecture--training)
   - [📉 Training Loss](#-training-loss)
 - [📈 Model Evaluation](#model-evaluation)
 - [Predictions & Metrics](#-predictions--metrics)
@@ -78,8 +78,8 @@ The **Household Electric Power Consumption** dataset contains minute-level measu
 - Combined the date and time columns into a single **datetime** column.
 - Set the datetime column as the **index** of the dataset for easier time-series handling and resampling.
 
-### 2-⏱️ Resampling to Hourly Frequency
-
+### 2- Resampling to Hourly Frequency
+⏱️
 - The original dataset contained **1-minute interval measurements** (~2 million rows).
 
 - To simplify time-series analysis, data was **resampled to hourly frequency**, taking the **mean value** for each hour.
@@ -171,8 +171,9 @@ Plotted average Global_active_power by hour to observe daily energy usage trends
 
 ----
 
-## 🏗️ RNN Model Architecture & Training
 
+## RNN Model Architecture & Training
+🏗️
 - **Model** : Sequential RNN with two layers: Two-layer **SimpleRNN** with **ReLU** activations and **Dropout** for regularization, followed by a **Dense** output layer for regression.
 - **Loss**: Mean Squared Error (MSE)
 - **Metrics**: Mean Absolute Error (MAE)
@@ -246,6 +247,7 @@ Shows true vs. predicted values on the test set :
  
 
   
+
 
 
 
