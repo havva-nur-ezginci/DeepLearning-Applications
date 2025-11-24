@@ -4,7 +4,17 @@
 The goal of this project is to build an **RNN-based model** that automatically classifies **news articles** from the AG News dataset into four **predefined categories.**
 
 
+## 📚 Table of Contents
+
+- [Dependencies & Environment](#dependencies--environment)
+- [Dataset Overview](#dataset-overview)
+- [Text Preprocessing](#text-preprocessing)
+- [🏗️ RNN Model Architecture](#rnn-model-architecture)
+- [Hyperparameter Search ⚙️🔎](#hyperparameter-search)
+- [Model Evaluation 📊](#model-evaluation-)
+  
 ----
+
 ## Dependencies & Environment
 
 ### 📦 Main Dependencies
@@ -59,9 +69,9 @@ The Title and Description fields were merged into a single text input and prepar
 
 ---
 
-# RNN Model Architecture 🏗️
+# RNN Model Architecture 
 
-The model uses a **SimpleRNN** structure to learn patterns from the text.
+🏗️ The model uses a **SimpleRNN** structure to learn patterns from the text.
 
 - **Embedding Layer:** Turns each word into a vector.
 - **SimpleRNN Layer:** Processes the sequence step-by-step and **learns the meaning** of the text.
@@ -72,10 +82,10 @@ The model uses a **SimpleRNN** structure to learn patterns from the text.
 
 ---
 
-# Hyperparameter Search ⚙️🔎
+# Hyperparameter Search 
 
 To improve model performance, **Random Search (via Keras Tuner)** was used to **find the best hyperparameters.**
-
+⚙️🔎
 The search optimized:
 
 1. Embedding dimension
@@ -86,6 +96,8 @@ The search optimized:
 - A total of **30 different model** configurations were tested.
 - Each configuration was trained once, and **early stopping** was applied to prevent unnecessary training.
 - This process helped identify the most effective architecture before training the final model.
+
+[Keras Tuner - Source](https://www.tensorflow.org/tutorials/keras/keras_tuner)
 
 ## Best Hyperparameters 🎯
 
@@ -119,7 +131,9 @@ These results show that the model generalizes well across the four news categori
 ROC curves were plotted for each class using the predicted probabilities.
 They show how well the model distinguishes each category across different thresholds.
 
-<img width="%80" height="%80" alt="image" src="https://github.com/user-attachments/assets/7c760bed-5617-48ce-bc45-b0076f092066" />
+<img width="700" height="650" alt="image" src="https://github.com/user-attachments/assets/7c760bed-5617-48ce-bc45-b0076f092066" />
+
+[Multi Class Roc Curve - Source](https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html)
 
 ## Classification Report
 
@@ -138,5 +152,5 @@ The model performs strongest on Sports and World, with slightly lower performanc
 
 A confusion matrix was generated to visualize how well the model distinguishes between the four categories.
 
-<img width="%80" height="%80" alt="image" src="https://github.com/user-attachments/assets/b9154848-44b9-416a-9b86-f881864d6df4" />
+<img width="700" height="780" alt="image" src="https://github.com/user-attachments/assets/b9154848-44b9-416a-9b86-f881864d6df4" />
 
