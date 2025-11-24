@@ -53,7 +53,7 @@ The Title and Description fields were merged into a single text input and prepar
 **Process:**
 
 1. Merged title + description.
-2. Applied a tokenizer with a 10,000-word vocabulary and an <OOV> token for unseen words.
+2. Applied a tokenizer with a 10,000-word vocabulary and an = \<OOV\> token for unseen words.
 3. Converted text into integer sequences.
 4. Applied padding and truncation (padding='post', truncating='post') to ensure uniform sequence length (maxlen = 100).
 
@@ -63,18 +63,18 @@ The Title and Description fields were merged into a single text input and prepar
 
 The model uses a **SimpleRNN** structure to learn patterns from the text.
 
-- Embedding Layer: Turns each word into a vector.
-- SimpleRNN Layer: Processes the sequence step-by-step and learns the meaning of the text.
-- Dropout: Reduces overfitting.
-- Dense Output Layer: Softmax layer that predicts the correct news category.
+- **Embedding Layer:** Turns each word into a vector.
+- **SimpleRNN Layer:** Processes the sequence step-by-step and **learns the meaning** of the text.
+- **Dropout:** Helps reduce overfitting.
+- **Dense Output Layer:** **Softmax** layer that predicts the correct news category.
 
-**The model was trained with the Adam optimizer, gradient clipping for stability, and categorical crossentropy for multi-class classification.**
+**The model was trained using the Adam optimizer, gradient clipping for stability, and categorical crossentropy for multi-class classification.**
 
 ---
 
 # Hyperparameter Search ⚙️🔎
 
-To improve model performance, a** Random Search (via Keras Tuner)** was used to **find the best hyperparameters.**
+To improve model performance, **Random Search (via Keras Tuner)** was used to **find the best hyperparameters.**
 
 The search optimized:
 
@@ -84,19 +84,19 @@ The search optimized:
 4. Gradient clipping value
 
 - A total of **30 different model** configurations were tested.
-- Each configuration was trained once, and **early stopping** was applied to avoid unnecessary training.
+- Each configuration was trained once, and **early stopping** was applied to prevent unnecessary training.
 - This process helped identify the most effective architecture before training the final model.
 
 ## Best Hyperparameters 🎯
 
-After the search, the tuner found the best configuration with a validation accuracy of 0.888.
+After the hyperparameter search, the tuner identified the best configuration, achieving a **validation accuracy** of **0.888**.
 
 **Selected Hyperparameters:**
 
-- Embedding Dimension: 128
-- RNN Units: 160
-- Dropout Rate: 0.3
-- Clipnorm: 1.0
+- **Embedding Dimension:** 128
+- **RNN Units:** 160
+- **Dropout Rate:** 0.3
+- **Clipnorm:** 1.0
 
 ---
 
