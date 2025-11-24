@@ -2,6 +2,8 @@
 ---
 ## DL Resources
 
+https://keras.io/api/
+
 https://poloclub.github.io/cnn-explainer/ 
 
 https://netron.app/
@@ -13,6 +15,7 @@ https://netron.app/
   - [1-CNN-Dogs-and-Cats-Classification](#dog---cat-classification-with-cnn)
 - [RNN](#rnn)
   - [1-RNN-Household-Electric-Power-Consumption](#-household-electric-power-consumption-forecasting-with-rnn)
+  - [2-RNN-News-Topic-Classification](#-news-topic-classification-with-rnn)
 
 ---
 # CNN
@@ -141,4 +144,52 @@ Below is the **confusion matrix and classification report** of the model’s tes
 pip install numpy pandas matplotlib seaborn scikit-learn tensorflow
 ```
 
+ ----
  
+## 📰 News Topic Classification with RNN
+[![Kaggle](https://img.shields.io/badge/Kaggle-Dataset-blue?logo=kaggle)](https://www.kaggle.com/datasets/amananandrai/ag-news-classification-dataset/data)
+
+
+> **For more detailed information, please refer to the**
+> [➡️ **Read the full README**](https://github.com/havva-nur-ezginci/DeepLearning-Applications/tree/main/2-RNN-News-Topic-Classification)
+
+---
+
+**Project Goal**: Classify news articles from the AG News dataset into **four categories (World, Sports, Business, Science/Technology)** using a **Recurrent Neural Network (RNN)**.
+
+### 📌 Key Highlights
+
+- **Dataset**: 127,600 samples (120k training + 7.6k test) with title and description.
+
+- **Target**: News category label (4 classes).
+
+- **Preprocessing & Features**:
+
+   - Merged title and description into a single text input
+   - Tokenized with 10,000-word vocabulary + `<OOV>` token
+   - Converted to integer sequences
+   - Padded/truncated sequences to `maxlen = 100`
+
+### 🏗️ Model Overview
+
+- **Architecture**: Embedding → SimpleRNN → Dropout → Dense (Softmax)
+
+- **Hyperparameters**: Embedding dimension = 128, RNN units = 160, Dropout = 0.3, Clipnorm = 1.0
+
+- **Hyperparameter Tuning**: Random Search via Keras Tuner
+
+- **Training**: Adam optimizer, categorical crossentropy, gradient clipping, early stopping
+
+### 📊 Results
+
+- **Accuracy**: 0.8915
+- **Loss**: 0.3542
+- **AUC**: 0.9756
+
+- **Evaluation  Visualizations**: ROC curves, Classification Report and confusion matrix included
+
+<img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/7c760bed-5617-48ce-bc45-b0076f092066" />
+
+
+---
+
