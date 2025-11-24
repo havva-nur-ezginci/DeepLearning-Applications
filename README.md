@@ -182,6 +182,8 @@ pip install numpy pandas matplotlib seaborn scikit-learn tensorflow
 
 ### 📊 Results
 
+ The final model was evaluated on the test set : 
+
 - **Accuracy**: 0.8915
 - **Loss**: 0.3542
 - **AUC**: 0.9756
